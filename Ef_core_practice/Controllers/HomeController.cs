@@ -1,4 +1,4 @@
-﻿using Ef_core_practice.Models;
+﻿using CodingWiki_Model.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

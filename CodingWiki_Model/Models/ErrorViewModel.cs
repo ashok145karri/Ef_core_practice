@@ -1,4 +1,4 @@
-namespace Ef_core_practice.Models
+namespace CodingWiki_Model.Models
 {
     public class ErrorViewModel
     {
