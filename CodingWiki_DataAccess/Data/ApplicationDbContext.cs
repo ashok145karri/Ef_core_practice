@@ -25,18 +25,29 @@ namespace CodingWiki_DataAccess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().Property(u => u.Price).HasPrecision(10, 5);
+            modelBuilder.Entity<BookAuthorMap>().HasKey(u => new {u.Author_Id,u.BookId});
 
-            modelBuilder.Entity<Book>().HasData(
+           /* modelBuilder.Entity<Book>().HasData(
 
-                new Book { BookId = 1, Title = "SpiderMan", ISBN = "123ashok45", Price = 19.0m },
-                new Book { BookId = 2, Title = "SuperMan", ISBN = "45kohsa", Price = 55.99m }
+                new Book { BookId = 1, Title = "SpiderMan", ISBN = "123ashok45", Price = 19.0m,Publisher_id=1 },
+                new Book { BookId = 2, Title = "SuperMan", ISBN = "45kohsa", Price = 55.99m, Publisher_id = 1 }
             );
             var bookList = new Book[]
             {
-                new Book { BookId = 3, Title = "Batman", ISBN = "8546lk", Price = 66.88m },
-                new Book { BookId = 4, Title = "Flash", ISBN = "82grs6", Price = 2.99m }
+                new Book { BookId = 3, Title = "Batman", ISBN = "8546lk", Price = 66.88m ,Publisher_id=2},
+                new Book { BookId = 4, Title = "Flash", ISBN = "82grs6", Price = 2.99m,Publisher_id=3 },
+                new Book { BookId = 5, Title = "captain", ISBN = "1234", Price = 2.09m,Publisher_id=3 }
+
+
             };
             modelBuilder.Entity<Book>().HasData(bookList);
+
+            modelBuilder.Entity<Publisher>().HasData(
+
+                new Publisher {  Publisher_Id = 1,Name="onetomany",Location="chicago" },
+                new Publisher {  Publisher_Id = 2,Name="onetomanysample",Location="france" },
+                new Publisher {  Publisher_Id = 3,Name="onetomanyexample",Location="china" }
+                );*/
         }
     }
 

@@ -16,5 +16,7 @@ namespace CodingWiki_Model.Models
         [Required]
         public string Name { get; set; }
         public string Location { get; set; }
+        //what if publisher want to get all the books published by publisher it work as a navigator property
+        public List<Book> Books { get; set; }
     }
 }

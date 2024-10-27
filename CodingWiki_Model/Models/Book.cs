@@ -27,5 +27,13 @@ namespace CodingWiki_Model.Models
         public int BookDetail_Id {  get; set; }*/
 
         public BookDetail BookDetail2 { get; set; }
+
+        [ForeignKey("Publisher")]
+        public int Publisher_id { get; set; }
+
+        public Publisher Publisher { get; set; }
+        //many to many relationship
+        public List<BookAuthorMap> BookAuthorMap { get; set; }
+
     }
 }
