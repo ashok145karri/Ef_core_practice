@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace CodingWiki_Model.Models
 {
-    [Table("Categories")]
-    public class Category
+    [Table("Publishers")]
+    public class Publisher
     {
         [Key]
-        public int CategoryId { get; set; }
-        [Column("Name")]
+        public int Publisher_Id { get; set; }
         [Required]
-        public string GenreName { get; set; }
-        //public int DisplayOrder { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
     }
 }

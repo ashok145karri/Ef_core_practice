@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CodingWiki_Model.Models
 {
-    [Table("Categories")]
-    public class Category
+    [Table("SubCategories")]
+    public class SubCategory
     {
         [Key]
-        public int CategoryId { get; set; }
-        [Column("Name")]
+        public int SubCategory_id { get; set; } 
         [Required]
-        public string GenreName { get; set; }
-        //public int DisplayOrder { get; set; }
+        [MaxLength(50)]
+        public string Name { get; set; }
+
     }
 }
