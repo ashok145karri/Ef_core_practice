@@ -21,5 +21,11 @@ namespace CodingWiki_Model.Models
 
         [NotMapped]
         public string PriceRange { get; set; }
+
+        //if you assign foreign key it will became child table and bookDetail will be parent table 
+        /*[ForeignKey("BookDetail2")]
+        public int BookDetail_Id {  get; set; }*/
+
+        public BookDetail BookDetail2 { get; set; }
     }
 }
