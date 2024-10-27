@@ -1,4 +1,5 @@
-﻿using CodingWiki_Model.Models;
+﻿using CodingWiki_DataAccess.FluentConfig;
+using CodingWiki_Model.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,28 @@ namespace CodingWiki_DataAccess.Data
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<BookDetail> BookDetails { get; set; }
+        public DbSet<Fluent_BookDetail> BookDetails_Fluent { get; set; }
+        public DbSet<Fluent_Book> Fluent_Books { get; set; }
+        public DbSet<Fluent_Author> Fluent_Authors { get; set; }
+        public DbSet<Fluent_Publisher> Fluent_Publishers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Ef_Core_Practice;TrustServerCertificate=True;Trusted_Connection=True;");
         }
+        //Data annotations and fluent api can be used together but code first give preference to the fluent api first then data annotations finally default conventions 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().Property(u => u.Price).HasPrecision(10, 5);
-            modelBuilder.Entity<BookAuthorMap>().HasKey(u => new {u.Author_Id,u.BookId});
+            modelBuilder.Entity<BookAuthorMap>().HasKey(u => new { u.Author_Id, u.BookId });
 
+            modelBuilder.ApplyConfiguration(new FluentAuthorConfig());
+            modelBuilder.ApplyConfiguration(new FluentBookAuthorMapConfig());
+            modelBuilder.ApplyConfiguration(new FluentBooKConfig());
+            modelBuilder.ApplyConfiguration(new FluentBookDetailConfig());
+            modelBuilder.ApplyConfiguration(new FluentPublisherConfig());
            /* modelBuilder.Entity<Book>().HasData(
 
                 new Book { BookId = 1, Title = "SpiderMan", ISBN = "123ashok45", Price = 19.0m,Publisher_id=1 },
@@ -48,6 +60,8 @@ namespace CodingWiki_DataAccess.Data
                 new Publisher {  Publisher_Id = 2,Name="onetomanysample",Location="france" },
                 new Publisher {  Publisher_Id = 3,Name="onetomanyexample",Location="china" }
                 );*/
+
+
         }
     }
 

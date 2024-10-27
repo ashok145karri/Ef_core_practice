@@ -4,6 +4,7 @@ using CodingWiki_DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodingWikiDataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241027202134_addFluent_one_to_many_Relation_book_and_publisher")]
+    partial class addFluentonetomanyRelationbookandpublisher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,9 +210,12 @@ namespace CodingWikiDataAccess.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Fluent_BookBookId")
+                        .HasColumnType("int");
+
                     b.HasKey("Author_Id", "BookId");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("Fluent_BookBookId");
 
                     b.ToTable("Fluent_BookAuthorMap");
                 });
@@ -355,21 +361,9 @@ namespace CodingWikiDataAccess.Migrations
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_BookAuthorMap", b =>
                 {
-                    b.HasOne("CodingWiki_Model.Models.Fluent_Author", "Author")
+                    b.HasOne("CodingWiki_Model.Models.Fluent_Book", null)
                         .WithMany("BookAuthorMap")
-                        .HasForeignKey("Author_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CodingWiki_Model.Models.Fluent_Book", "Book")
-                        .WithMany("BookAuthorMap")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Book");
+                        .HasForeignKey("Fluent_BookBookId");
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_BookDetail", b =>
@@ -393,11 +387,6 @@ namespace CodingWikiDataAccess.Migrations
                     b.Navigation("BookAuthorMap");
 
                     b.Navigation("BookDetail2");
-                });
-
-            modelBuilder.Entity("CodingWiki_Model.Models.Fluent_Author", b =>
-                {
-                    b.Navigation("BookAuthorMap");
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_Book", b =>
