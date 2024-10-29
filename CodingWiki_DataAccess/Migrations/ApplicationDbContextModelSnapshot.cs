@@ -47,7 +47,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("Author_Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Book", b =>
@@ -77,7 +77,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasIndex("Publisher_id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.BookAuthorMap", b =>
@@ -92,7 +92,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("BookAuthorMap");
+                    b.ToTable("BookAuthorMap", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.BookDetail", b =>
@@ -120,7 +120,7 @@ namespace CodingWikiDataAccess.Migrations
                     b.HasIndex("BookId")
                         .IsUnique();
 
-                    b.ToTable("BookDetails");
+                    b.ToTable("BookDetails", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Category", b =>
@@ -138,7 +138,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_Author", b =>
@@ -166,7 +166,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("Author_Id");
 
-                    b.ToTable("Fluent_Authors");
+                    b.ToTable("Fluent_Authors", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_Book", b =>
@@ -204,7 +204,6 @@ namespace CodingWikiDataAccess.Migrations
                             BookId = 1,
                             ISBN = "123ashok45",
                             Price = 19.0m,
-                            Publisherid = 1,
                             Title = "SpiderMan"
                         },
                         new
@@ -212,7 +211,6 @@ namespace CodingWikiDataAccess.Migrations
                             BookId = 2,
                             ISBN = "45kohsa",
                             Price = 55.99m,
-                            Publisherid = 1,
                             Title = "SuperMan"
                         },
                         new
@@ -220,7 +218,6 @@ namespace CodingWikiDataAccess.Migrations
                             BookId = 3,
                             ISBN = "8546lk",
                             Price = 66.88m,
-                            Publisherid = 2,
                             Title = "Batman"
                         },
                         new
@@ -228,7 +225,6 @@ namespace CodingWikiDataAccess.Migrations
                             BookId = 4,
                             ISBN = "82grs6",
                             Price = 2.99m,
-                            Publisherid = 3,
                             Title = "Flash"
                         },
                         new
@@ -236,7 +232,6 @@ namespace CodingWikiDataAccess.Migrations
                             BookId = 5,
                             ISBN = "1234",
                             Price = 2.09m,
-                            Publisherid = 3,
                             Title = "captain"
                         });
                 });
@@ -253,7 +248,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Fluent_BookAuthorMap");
+                    b.ToTable("Fluent_BookAuthorMap", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Fluent_BookDetail", b =>
@@ -302,24 +297,21 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("Publisher_Id");
 
-                    b.ToTable("Fluent_Publishers");
+                    b.ToTable("Fluent_Publishers", (string)null);
 
                     b.HasData(
                         new
                         {
-                            PublisherId = 1,
                             Location = "chicago",
                             Name = "onetomany"
                         },
                         new
                         {
-                            PublisherId = 2,
                             Location = "france",
                             Name = "onetomanysample"
                         },
                         new
                         {
-                            PublisherId = 3,
                             Location = "china",
                             Name = "onetomanyexample"
                         });
@@ -342,7 +334,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("Publisher_Id");
 
-                    b.ToTable("Publishers");
+                    b.ToTable("Publishers", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.SubCategory", b =>
@@ -360,7 +352,7 @@ namespace CodingWikiDataAccess.Migrations
 
                     b.HasKey("SubCategory_id");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Book", b =>

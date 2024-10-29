@@ -23,11 +23,14 @@ namespace CodingWiki_DataAccess.Data
         public DbSet<Fluent_Author> Fluent_Authors { get; set; }
         public DbSet<Fluent_Publisher> Fluent_Publishers { get; set; }
 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
+        {
 
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Ef_Core_Practice;TrustServerCertificate=True;Trusted_Connection=True;")
-                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name},LogLevel.Information);//with this we can add the log    
+           // optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Ef_Core_Practice;TrustServerCertificate=True;Trusted_Connection=True;")
+             //   .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name},LogLevel.Information);//with this we can add the log    
         }
         //Data annotations and fluent api can be used together but code first give preference to the fluent api first then data annotations finally default conventions 
 

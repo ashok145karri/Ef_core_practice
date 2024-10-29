@@ -25,8 +25,8 @@ Console.WriteLine("Hello, World!");
 //GetBook();
 
 //UpdateBook();
-DeleteBook();
-
+//DeleteBook();
+/*
 async void DeleteBook()
 {
     using var context = new ApplicationDbContext();
@@ -113,3 +113,4 @@ void AddBook()
 
 }
 
+*/
